@@ -32,11 +32,10 @@ public class Hotel {
     }
 
     public void checkInGuest(Guest guest, Room room) {
-//        Do some check on the remaining room capacity
-//        if there is space left, check in the guest
-//        call the rooms addGuestToRoom fn
-        int capacityCheck = room.getRemainingCapacity();
-        if (capacityCheck >= 1){
+//        First do the check for all the current vacant rooms
+        setVacantBedrooms();
+//        If the room is listed in the vacantBedrooms ArrayList, we can safely add a new guest to it
+        if (vacantBedrooms.contains(room)){
             room.addGuestToRoom(guest);
         }
     }
@@ -83,13 +82,18 @@ public class Hotel {
     }
 
     public void setVacantBedrooms(){
+        vacantBedrooms.clear();
 //        For type Bedroom, object bedroom, in bedrooms ArrayList
 //          if bedroom.getGetCount() = 0
 //                add bedroom to vacantBedrooms
-        for(Bedroom bedroom : bedrooms){
-            if (bedroom.getGuestCount() == 0){
+        for(Bedroom bedroom : bedrooms) {
+            if (bedroom.getGuestCount() == 0) {
                 vacantBedrooms.add(bedroom);
             }
         }
+    }
+
+    public ArrayList getVacantBedrooms(){
+        return vacantBedrooms;
     }
 }

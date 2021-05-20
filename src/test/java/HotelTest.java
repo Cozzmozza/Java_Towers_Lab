@@ -60,8 +60,15 @@ public class HotelTest {
     }
 
     @Test
-    public void canCheckInGuestToBedroom(){
+    public void canCheckInGuestToVacantBedroom(){
         hotel.checkInGuest(guest1, bedroom1);
+        assertEquals(1, bedroom1.getGuestCount());
+    }
+
+    @Test
+    public void cannotCheckInGuestToNonVacantBedroom(){
+        hotel.checkInGuest(guest1, bedroom1);
+        hotel.checkInGuest(guest2, bedroom1);
         assertEquals(1, bedroom1.getGuestCount());
     }
 
@@ -135,13 +142,32 @@ public class HotelTest {
     }
 
     @Test
-    public void canReturnOnlyVacantBedrooms(){
+    public void canReturnVacantBedrooms(){
 //        Add a guest to bedroom 1
         hotel.checkInGuest(guest1, bedroom1);
 //        Initialise the vacant bedrooms , our "check for vacant rooms"
         hotel.setVacantBedrooms();
 //        We then want to check that bedroom 2 is returned, when we check our vacant Bedrooms function
         assertEquals(1, hotel.getCountVacantBedrooms());
+    }
 
+    @Test
+    public void willNotReturnNonVacantBedrooms(){
+//        Calling it first time will set vacant bedrooms to bedroom1, and bedroom 2
+        hotel.setVacantBedrooms();
+//        Then adding a guest to bedroom 1
+        hotel.checkInGuest(guest1, bedroom1);
+//        Re-running to make sure it then removes any non-vacants from the list, with the clear() method
+        hotel.setVacantBedrooms();
+        assertEquals(1, hotel.getCountVacantBedrooms());
+    }
+
+    @Test
+    public void canGetVacantBedroomsArrayList(){
+        hotel.checkInGuest(guest1, bedroom1);
+        hotel.setVacantBedrooms();
+        ArrayList<Bedroom> testList = new ArrayList<>();
+        testList.add(bedroom2);
+        assertEquals(testList, hotel.getVacantBedrooms());
     }
 }
