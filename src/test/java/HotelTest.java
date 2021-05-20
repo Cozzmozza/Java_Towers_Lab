@@ -14,6 +14,7 @@ public class HotelTest {
     Guest guest2;
     Guest guest3;
     Booking booking1;
+    DiningRoom diningRoom1;
 
     @Before
     public void before(){
@@ -35,6 +36,7 @@ public class HotelTest {
         conferenceRooms.add(conferenceRoom1);
 
         booking1 = new Booking(4, bedroom1);
+        diningRoom1 = new DiningRoom(5, "Main");
 
         hotel = new Hotel("JavaTowers", bedrooms, conferenceRooms);
     }
@@ -111,5 +113,16 @@ public class HotelTest {
     @Test
     public void hotelCanReturnBill(){
         assertEquals(200.00, hotel.getBill(booking1), 0.005);
+    }
+
+    @Test
+    public void hotelCanGetCountOfDiningRoomsInHashMap(){
+        assertEquals(0, hotel.getDiningRoomCount());
+    }
+
+    @Test
+    public void canAddDiningRoomToHashMap(){
+        hotel.addDiningRoom(diningRoom1);
+        assertEquals(1, hotel.getDiningRoomCount());
     }
 }
