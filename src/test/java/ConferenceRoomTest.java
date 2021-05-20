@@ -9,18 +9,33 @@ public class ConferenceRoomTest {
 
     ConferenceRoom conferenceRoom;
     Guest guest;
-    ArrayList <Guest> guests;;
 
     @Before
-
     public void before() {
-        conferenceRoom = new ConferenceRoom(40, guests, "Cawdor");
+        conferenceRoom = new ConferenceRoom(40, "Cawdor");
         guest = new Guest("Bob");
+    }
+
+    @Test
+    public void hasCapacity() {
+        assertEquals(40, conferenceRoom.getCapacity());
+    }
+
+    @Test
+    public void hasName() {
+        assertEquals("Cawdor", conferenceRoom.getName());
+    }
+
+    @Test
+    public void hasGuests() {
+        assertEquals(0, conferenceRoom.getGuestCount());
     }
 
     @Test
     public void canAddGuestToConferenceRoom() {
         conferenceRoom.addGuestToRoom(guest);
+//        assertEquals("Bob", conferenceRoom.getGuests());
         assertEquals(1, conferenceRoom.getGuestCount());
     }
+
 }
