@@ -36,4 +36,9 @@ public class BedroomTest {
         bedroom.removeGuestFromRoom(guest);
         assertEquals(1, bedroom.getGuestCount());
     }
+
+    @Test
+    public void testRoomType(){
+        assertEquals(RoomType.SINGLE, bedroom.getRoomType());
+    }
 }

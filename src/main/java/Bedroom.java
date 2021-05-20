@@ -18,5 +18,4 @@ public class Bedroom extends Room{
         return roomType;
     }
 
-
 }

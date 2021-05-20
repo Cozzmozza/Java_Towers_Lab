@@ -26,6 +26,10 @@ public class Hotel {
 //        return conferenceRooms;
 //    }
 
+//    public RoomType getRoomType(Bedroom bedroom){
+//        return bedroom.getRoomType();
+//    }
+
     public int getCountBedrooms(){
         return bedrooms.size();
     }

@@ -14,9 +14,6 @@ public class HotelTest {
     Guest guest2;
     Guest guest3;
 
-
-
-
     @Before
     public void before(){
 //        Making some guests
@@ -35,7 +32,6 @@ public class HotelTest {
         conferenceRoom1 = new ConferenceRoom(10, "Cawdor");
         conferenceRooms = new ArrayList<>();
         conferenceRooms.add(conferenceRoom1);
-
 
         hotel = new Hotel("JavaTowers", bedrooms, conferenceRooms);
     }
