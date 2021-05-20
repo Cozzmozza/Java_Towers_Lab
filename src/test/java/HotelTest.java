@@ -9,6 +9,7 @@ public class HotelTest {
 
     Hotel hotel;
     Bedroom bedroom1;
+    Bedroom bedroom2;
     ConferenceRoom conferenceRoom1;
     Guest guest1;
     Guest guest2;
@@ -26,8 +27,10 @@ public class HotelTest {
         // Making an array of bedrooms to go into Hotel
         ArrayList<Bedroom> bedrooms;
         bedroom1 = new Bedroom(10, RoomType.DOUBLE);
+        bedroom2 = new Bedroom(5, RoomType.TWIN);
         bedrooms = new ArrayList<>();
         bedrooms.add(bedroom1);
+        bedrooms.add(bedroom2);
 
         // Making an array of conferenceRooms to go into Hotel
         ArrayList<ConferenceRoom> conferenceRooms;
@@ -48,7 +51,7 @@ public class HotelTest {
 
     @Test
     public void canGetBedroomCount(){
-        assertEquals(1, hotel.getCountBedrooms());
+        assertEquals(2, hotel.getCountBedrooms());
     }
 
     @Test
@@ -124,5 +127,21 @@ public class HotelTest {
     public void canAddDiningRoomToHashMap(){
         hotel.addDiningRoom(diningRoom1);
         assertEquals(1, hotel.getDiningRoomCount());
+    }
+
+    @Test
+    public void canGetCountOfVacantBedrooms(){
+        assertEquals(0, hotel.getCountVacantBedrooms());
+    }
+
+    @Test
+    public void canReturnOnlyVacantBedrooms(){
+//        Add a guest to bedroom 1
+        hotel.checkInGuest(guest1, bedroom1);
+//        Initialise the vacant bedrooms , our "check for vacant rooms"
+        hotel.setVacantBedrooms();
+//        We then want to check that bedroom 2 is returned, when we check our vacant Bedrooms function
+        assertEquals(1, hotel.getCountVacantBedrooms());
+
     }
 }

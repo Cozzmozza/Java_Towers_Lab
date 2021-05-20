@@ -8,6 +8,7 @@ public class Hotel {
     private ArrayList<ConferenceRoom> conferenceRooms;
     private ArrayList<Booking> bedroomBookings;
     private HashMap<String, DiningRoom> diningRooms;
+    private ArrayList<Bedroom> vacantBedrooms;
 
     public Hotel(String name, ArrayList<Bedroom> bedrooms, ArrayList<ConferenceRoom> conferenceRooms) {
     this.name = name;
@@ -15,6 +16,7 @@ public class Hotel {
     this.conferenceRooms = conferenceRooms;
     this.bedroomBookings = new ArrayList<>();
     this.diningRooms = new HashMap<>();
+    this.vacantBedrooms = new ArrayList<>();
     }
 
     public String getName() {
@@ -71,5 +73,23 @@ public class Hotel {
 
     public void addDiningRoom(DiningRoom diningRoom) {
         diningRooms.put(diningRoom.getName(), diningRoom);
+    }
+
+    public int getCountVacantBedrooms() {
+//       Can either do an ArrayList that returns the bedrooms
+//        Or do a hashmap that returns the bedrooms, and another property e.g. roomType value, or capacity
+//        Going to go with the arraylist
+        return vacantBedrooms.size();
+    }
+
+    public void setVacantBedrooms(){
+//        For type Bedroom, object bedroom, in bedrooms ArrayList
+//          if bedroom.getGetCount() = 0
+//                add bedroom to vacantBedrooms
+        for(Bedroom bedroom : bedrooms){
+            if (bedroom.getGuestCount() == 0){
+                vacantBedrooms.add(bedroom);
+            }
+        }
     }
 }
