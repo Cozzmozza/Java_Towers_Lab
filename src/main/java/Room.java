@@ -32,4 +32,12 @@ public abstract class Room {
     public int getGuestCount() {
         return guests.size();
     }
+
+    public int getRemainingCapacity(){
+        return getCapacity() - getGuestCount();
+    }
+
+    public ArrayList<Guest> getAllGuests(){
+        return guests;
+    }
 }
