@@ -7,7 +7,4 @@ public class Booking {
         this.nightsBooked = nightsBooked;
         this.bedroom = bedroom;
     }
-
-
-
 }
