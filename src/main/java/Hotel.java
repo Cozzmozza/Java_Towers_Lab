@@ -12,23 +12,9 @@ public class Hotel {
     this.conferenceRooms = conferenceRooms;
     }
 
-
-    // GETTERS
     public String getName() {
         return name;
     }
-
-//    public ArrayList<Bedroom> getBedrooms() {
-//        return bedrooms;
-//    }
-//
-//    public ArrayList<ConferenceRoom> getConferenceRooms() {
-//        return conferenceRooms;
-//    }
-
-//    public RoomType getRoomType(Bedroom bedroom){
-//        return bedroom.getRoomType();
-//    }
 
     public int getCountBedrooms(){
         return bedrooms.size();
@@ -47,7 +33,6 @@ public class Hotel {
             room.addGuestToRoom(guest);
         }
     }
-
 
     public void checkOutGuest(Guest guest, Room room) {
         ArrayList<Guest> guests = room.getAllGuests();
