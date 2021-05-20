@@ -19,6 +19,11 @@ public class BedroomTest {
     }
 
     @Test
+    public void canGetPrice(){
+        assertEquals(35.00, bedroom.getRoomPrice(), 0.005);
+    }
+
+    @Test
     public void hasRoomNumber() {
         assertEquals(10, bedroom.getRoomNumber());
     }

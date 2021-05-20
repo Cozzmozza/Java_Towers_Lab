@@ -57,5 +57,8 @@ public class Hotel {
         bedroomBookings.add(booking);
     }
 
-
+    public double getBill(Booking booking) {
+        double bill = booking.getTotalCost();
+        return bill;
+    }
 }
