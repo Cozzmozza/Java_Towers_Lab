@@ -32,4 +32,8 @@ public abstract class Room {
     public ArrayList<Guest> getGuests() {
         return guests;
     }
+
+    public int getGuestCount() {
+        return guests.size();
+    }
 }
