@@ -5,6 +5,7 @@ public class Hotel {
     private String name;
     private ArrayList<Bedroom> bedrooms;
     private ArrayList<ConferenceRoom> conferenceRooms;
+    private Booking booking;
 
     public Hotel(String name, ArrayList<Bedroom> bedrooms, ArrayList<ConferenceRoom> conferenceRooms) {
     this.name = name;
@@ -39,5 +40,9 @@ public class Hotel {
         if (guests.contains(guest)){
             room.removeGuestFromRoom(guest);
         }
+    }
+
+    public void bookRoom(int nightsBooked, Bedroom bedroom){
+        return new Booking(nightsBooked, bedroom);
     }
 }
